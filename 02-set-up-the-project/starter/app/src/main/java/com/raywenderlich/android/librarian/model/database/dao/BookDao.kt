@@ -18,6 +18,15 @@ interface BookDao {
     @Delete
     fun deleteBook(book: Book)
 
+    /**
+     * @book
+     * So we have two ways of removing book from the DB
+     * @id
+     */
+
+    @Query("DELETE FROM Books WHERE id=:bookId")
+    fun removeBookWithId(bookId: String)
+
     @Query("SELECT * FROM Books WHERE id=:bookId")
     fun getBookWithId(bookId:String) : Book
 
