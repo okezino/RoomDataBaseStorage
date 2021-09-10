@@ -35,12 +35,22 @@
 package com.raywenderlich.android.librarian.model.relations
 
 import android.os.Parcelable
+import androidx.room.Embedded
+import androidx.room.Relation
 import com.raywenderlich.android.librarian.model.Book
 import com.raywenderlich.android.librarian.model.Genre
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class BookAndGenre(
+
+    @Embedded
     val book: Book,
+   @Relation(parentColumn = "BookGenreId", entityColumn = "id")
     val genre: Genre
 ) : Parcelable
+
+/**
+ * @parentColumn ref an id from the book class
+ * @id ref an id from the genre class
+ */

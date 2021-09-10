@@ -39,6 +39,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.raywenderlich.android.librarian.App
 import com.raywenderlich.android.librarian.R
 import com.raywenderlich.android.librarian.model.Book
 import com.raywenderlich.android.librarian.model.ReadingList
@@ -54,6 +55,10 @@ class ReadingListDetailsActivity : AppCompatActivity() {
 
   private val adapter by lazy { BookAdapter(::onItemLongTapped) }
   private var readingList: ReadingListsWithBooks? = null
+
+  private val repository by lazy {
+    App.Repository
+  }
 
   companion object {
     private const val KEY_BOOK_REVIEW = "book_review"
@@ -130,8 +135,8 @@ class ReadingListDetailsActivity : AppCompatActivity() {
 
       val newReadingList = ReadingList(
           data.id,
-          data.name,
-          bookIds
+          data.name
+//          bookIds
       )
       // TODO update reading list
 
@@ -147,8 +152,8 @@ class ReadingListDetailsActivity : AppCompatActivity() {
 
       val newReadingList = ReadingList(
           data.id,
-          data.name,
-          bookIds
+          data.name
+//          bookIds
       )
 
       // TODO update reading list
